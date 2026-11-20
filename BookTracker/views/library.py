@@ -1,4 +1,4 @@
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import base64
 import mimetypes
 import streamlit as st
@@ -16,50 +16,56 @@ def clean_values(values):
     return sorted({str(v).strip() for v in values if v is not None and str(v).strip()}, key=str.casefold)
 
 def resolve_cover_path(cover_path):
-    """Resolve a cover after the BookTracker project has been moved."""
+    """Resolve saved Windows cover paths locally and on Streamlit Cloud."""
     if not cover_path:
         return None
 
     raw_path = str(cover_path).strip().strip('"').strip("'")
-    old_path = Path(raw_path)
+
+    if not raw_path:
+        return None
 
     project_dir = Path(__file__).resolve().parent.parent
-    current_library_dir = project_dir / "library"
+    library_dir = project_dir / "library"
 
-    # Use the stored path if it still exists.
-    if old_path.is_file():
-        return old_path.resolve()
+    # First, try the stored path directly. This handles a valid local path.
+    direct_path = Path(raw_path)
 
-    # Preserve the book-number folder and filename:
-    # library/000004/cover.png
-    path_parts = list(old_path.parts)
+    if direct_path.is_file():
+        return direct_path.resolve()
 
-    try:
-        library_index = next(
-            index
-            for index, part in enumerate(path_parts)
-            if part.casefold() == "library"
+    # Parse the saved path using Windows path rules, even on Linux.
+    windows_path = PureWindowsPath(raw_path)
+    path_parts = windows_path.parts
+
+    # Reconstruct everything following the "library" folder.
+    # Example:
+    # C:\\...\BookTracker\\library\\000003\\cover.png
+    # becomes:
+    # <current project>/library/000003/cover.png
+    for index, part in enumerate(path_parts):
+        if part.casefold() == "library":
+            relative_parts = path_parts[index + 1:]
+
+            if relative_parts:
+                reconstructed_path = library_dir.joinpath(*relative_parts)
+
+                if reconstructed_path.is_file():
+                    return reconstructed_path.resolve()
+
+            break
+
+    # Fallback using the book directory and filename.
+    # Example: 000003/cover.png
+    if windows_path.parent.name and windows_path.name:
+        fallback_path = (
+            library_dir
+            / windows_path.parent.name
+            / windows_path.name
         )
 
-        relative_library_path = Path(*path_parts[library_index + 1:])
-        moved_path = current_library_dir / relative_library_path
-
-        if moved_path.is_file():
-            return moved_path.resolve()
-
-    except StopIteration:
-        pass
-
-    # Secondary fallback using the final parent folder and filename.
-    if old_path.parent.name and old_path.name:
-        moved_path = (
-            current_library_dir
-            / old_path.parent.name
-            / old_path.name
-        )
-
-        if moved_path.is_file():
-            return moved_path.resolve()
+        if fallback_path.is_file():
+            return fallback_path.resolve()
 
     return None
 
