@@ -1,0 +1,86 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# =========================
+# IDEs
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Operating System
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+secrets.json
+
+# =========================
+# Email Files
+# =========================
+*.eml
+*.msg
+
+# =========================
+# Excel / Data Files
+# =========================
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+
+# =========================
+# PyInstaller
+# =========================
+build/
+dist/
+*.pyz
+
+# =========================
+# Python Build Artifacts
+# =========================
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Reports / Exports
+# =========================
+exports/
+output/
+reports/
+
+# =========================
+# Streamlit
+# =========================
+.streamlit/secrets.toml

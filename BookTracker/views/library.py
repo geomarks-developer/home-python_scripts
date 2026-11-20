@@ -1,9 +1,13 @@
 from pathlib import Path
+import base64
+import mimetypes
 import streamlit as st
 from database import list_books
 
 st.title("📚 My Library")
+st.code(str(Path(__file__).resolve()))
 books = list_books()
+
 if not books:
     st.info("Your library is empty. Add your first book from Add Book.")
     st.stop()
@@ -11,15 +15,91 @@ if not books:
 def clean_values(values):
     return sorted({str(v).strip() for v in values if v is not None and str(v).strip()}, key=str.casefold)
 
-def cover_exists(book):
-    p = book["cover_path"]
-    return bool(p and Path(p).exists())
+def resolve_cover_path(cover_path):
+    """Resolve a cover after the BookTracker project has been moved."""
+    if not cover_path:
+        return None
 
-def show_cover(book, width="stretch"):
-    if cover_exists(book):
-        st.image(book["cover_path"], width=width)
-    else:
-        st.markdown("<div style='height:260px;display:flex;align-items:center;justify-content:center;background:#eee;border-radius:8px;font-size:72px'>📖</div>", unsafe_allow_html=True)
+    raw_path = str(cover_path).strip().strip('"').strip("'")
+    old_path = Path(raw_path)
+
+    project_dir = Path(__file__).resolve().parent.parent
+    current_library_dir = project_dir / "library"
+
+    # Use the stored path if it still exists.
+    if old_path.is_file():
+        return old_path.resolve()
+
+    # Preserve the book-number folder and filename:
+    # library/000004/cover.png
+    path_parts = list(old_path.parts)
+
+    try:
+        library_index = next(
+            index
+            for index, part in enumerate(path_parts)
+            if part.casefold() == "library"
+        )
+
+        relative_library_path = Path(*path_parts[library_index + 1:])
+        moved_path = current_library_dir / relative_library_path
+
+        if moved_path.is_file():
+            return moved_path.resolve()
+
+    except StopIteration:
+        pass
+
+    # Secondary fallback using the final parent folder and filename.
+    if old_path.parent.name and old_path.name:
+        moved_path = (
+            current_library_dir
+            / old_path.parent.name
+            / old_path.name
+        )
+
+        if moved_path.is_file():
+            return moved_path.resolve()
+
+    return None
+
+
+def cover_exists(book):
+    return resolve_cover_path(book["cover_path"]) is not None
+
+
+@st.cache_data(show_spinner=False)
+def image_to_data_url(path_string):
+    path = Path(path_string)
+    mime_type, _ = mimetypes.guess_type(path.name)
+    mime_type = mime_type or "image/jpeg"
+    try:
+        encoded = base64.b64encode(path.read_bytes()).decode("utf-8")
+        return f"data:{mime_type};base64,{encoded}"
+    except OSError:
+        return None
+
+
+def get_cover_data_url(book):
+    path = resolve_cover_path(book["cover_path"])
+    return image_to_data_url(str(path)) if path else None
+
+
+def show_cover(book, width="stretch", height=360):
+    cover_url = get_cover_data_url(book)
+    if not cover_url:
+        st.markdown(
+            f"<div style='height:{height}px;display:flex;align-items:center;justify-content:center;background:#eee;border-radius:8px;font-size:72px'>📖</div>",
+            unsafe_allow_html=True,
+        )
+        return
+    css_width = "100%" if width == "stretch" else f"{width}px" if isinstance(width, int) else str(width)
+    html = (
+        f'<div style="width:100%;display:flex;justify-content:center;align-items:center;">'
+        f'<img src="{cover_url}" alt="Book cover" style="width:{css_width};max-width:100%;height:{height}px;object-fit:cover;display:block;border-radius:10px;box-shadow:0 5px 18px rgba(0,0,0,.25);">'
+        f'</div>'
+    )
+    st.markdown(html, unsafe_allow_html=True)
 
 all_authors = clean_values(b["author"] for b in books)
 all_genres = clean_values(b["genre"] for b in books)
@@ -105,18 +185,17 @@ if view == "Cover Flow":
     if n == 1:
         _, center_col, _ = st.columns([2.2, 2.0, 2.2])
         with center_col:
-            show_cover(filtered[idx], 340)
+            show_cover(filtered[idx], width=340, height=500)
     elif n == 2:
         left_idx = (idx - 1) % n
         left_space, left_col, gap, center_col, right_space = st.columns([1.2, 1.25, 0.45, 2.15, 1.2], vertical_alignment="center")
         with left_col:
-            if cover_exists(filtered[left_idx]): st.image(filtered[left_idx]["cover_path"], width=175)
-            else: st.markdown("### 📖")
+            show_cover(filtered[left_idx], width=175, height=260)
             if st.button(filtered[left_idx]["title"][:22], key=f"flow_left_{filtered[left_idx]['id']}", use_container_width=True):
                 st.session_state["cover_flow_index"] = left_idx
                 st.rerun()
         with center_col:
-            show_cover(filtered[idx], 340)
+            show_cover(filtered[idx], width=340, height=500)
     else:
         left_idx = (idx - 1) % n
         right_idx = (idx + 1) % n
@@ -127,29 +206,27 @@ if view == "Cover Flow":
             outer_left_idx = (idx - 2) % n
             outer_right_idx = (idx + 2) % n
             with flow_cols[0]:
-                if cover_exists(filtered[outer_left_idx]): st.image(filtered[outer_left_idx]["cover_path"], width=105)
+                show_cover(filtered[outer_left_idx], width=105, height=175)
                 if st.button("◀", key=f"flow_outer_left_{filtered[outer_left_idx]['id']}", use_container_width=True):
                     st.session_state["cover_flow_index"] = outer_left_idx
                     st.rerun()
             with flow_cols[4]:
-                if cover_exists(filtered[outer_right_idx]): st.image(filtered[outer_right_idx]["cover_path"], width=105)
+                show_cover(filtered[outer_right_idx], width=105, height=175)
                 if st.button("▶", key=f"flow_outer_right_{filtered[outer_right_idx]['id']}", use_container_width=True):
                     st.session_state["cover_flow_index"] = outer_right_idx
                     st.rerun()
 
         with flow_cols[1]:
-            if cover_exists(filtered[left_idx]): st.image(filtered[left_idx]["cover_path"], width=175)
-            else: st.markdown("### 📖")
+            show_cover(filtered[left_idx], width=175, height=260)
             if st.button(filtered[left_idx]["title"][:22], key=f"flow_left_{filtered[left_idx]['id']}", use_container_width=True):
                 st.session_state["cover_flow_index"] = left_idx
                 st.rerun()
 
         with flow_cols[2]:
-            show_cover(filtered[idx], 340)
+            show_cover(filtered[idx], width=340, height=500)
 
         with flow_cols[3]:
-            if cover_exists(filtered[right_idx]): st.image(filtered[right_idx]["cover_path"], width=175)
-            else: st.markdown("### 📖")
+            show_cover(filtered[right_idx], width=175, height=260)
             if st.button(filtered[right_idx]["title"][:22], key=f"flow_right_{filtered[right_idx]['id']}", use_container_width=True):
                 st.session_state["cover_flow_index"] = right_idx
                 st.rerun()
@@ -183,7 +260,7 @@ else:
         cols = st.columns(5)
         for col, book in zip(cols, row_books):
             with col:
-                show_cover(book)
+                show_cover(book, width="stretch", height=360)
                 st.markdown(f"**{book['title']}**")
                 st.caption(book["author"])
                 if book["rating"]: st.write("★" * book["rating"])
