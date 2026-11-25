@@ -777,6 +777,12 @@ st.page_link(
     use_container_width=True,
 )
 
+st.page_link(
+    "pages/7_Portfolio.py",
+    label="Portfolio",
+    icon="📖",
+    use_container_width=True,
+)
 
 # ============================================================
 # FRESHNESS INDICATOR
