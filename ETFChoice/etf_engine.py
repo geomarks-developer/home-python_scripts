@@ -1,5 +1,5 @@
 """
-MarketScope ETF
+ETFChoice
 ETF analysis and scoring engine.
 
 This module calculates:
@@ -15,7 +15,7 @@ This module calculates:
 - Momentum score
 - Trend score
 - Risk score
-- Overall MarketScope ETF score
+- Overall ETFChoice score
 
 The module does not download market data. Historical price data
 must be supplied by market_data.py or another data-loading module.
@@ -331,7 +331,7 @@ def calculate_ytd_return(close: pd.Series) -> float:
 
 def calculate_returns(close: pd.Series) -> dict[str, float]:
     """
-    Calculate all configured MarketScope performance windows.
+    Calculate all configured ETFChoice performance windows.
     """
 
     results: dict[str, float] = {}
@@ -969,7 +969,7 @@ def calculate_overall_score(
     dividend_score: float = np.nan,
 ) -> float:
     """
-    Calculate the overall MarketScope ETF score.
+    Calculate the overall ETFChoice score.
 
     Missing component scores are excluded and the remaining
     configured weights are re-normalized.
@@ -1439,7 +1439,7 @@ def prepare_screener_display(
 
 if __name__ == "__main__":
 
-    print("MarketScope ETF analysis engine loaded.")
+    print("ETFChoice analysis engine loaded.")
     print(
         "This module expects historical price data "
         "from market_data.py."

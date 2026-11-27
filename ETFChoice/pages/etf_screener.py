@@ -9,7 +9,7 @@ import streamlit as st
 st.title("🔎 ETF Screener")
 
 st.caption(
-    "Screen the MarketScope ETF universe using category, "
+    "Screen the ETFChoice universe using category, "
     "score, momentum, trend, performance, and risk."
 )
 
@@ -22,7 +22,7 @@ market_data = st.session_state.get("market_data")
 
 if market_data is None:
     st.error(
-        "Shared MarketScope ETF data is not loaded. "
+        "Shared  ETFChoice data is not loaded. "
         "Restart the application."
     )
     st.stop()
@@ -900,7 +900,7 @@ if not filtered_df.empty:
 st.markdown("---")
 
 st.caption(
-    "MarketScope ETF rankings are quantitative screening "
+    "ETFChoice rankings are quantitative screening "
     "tools for informational and educational purposes only. "
     "They are not investment recommendations."
 )

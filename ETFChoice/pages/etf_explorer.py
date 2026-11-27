@@ -26,7 +26,7 @@ market_data = st.session_state.get("market_data")
 
 if market_data is None:
     st.error(
-        "Shared MarketScope ETF data is not loaded. "
+        "Shared ETFChoice data is not loaded. "
         "Restart the application."
     )
     st.stop()
@@ -531,7 +531,7 @@ with technical4:
 
 st.markdown("---")
 
-st.markdown("## MarketScope Score Breakdown")
+st.markdown("## ETFChoice Score Breakdown")
 
 
 score_data = pd.DataFrame(
@@ -881,8 +881,8 @@ with st.expander(
 st.markdown("---")
 
 st.caption(
-    "MarketScope ETF is provided for informational and "
+    "ETFChoice is provided for informational and "
     "educational purposes only. Historical performance, "
-    "rankings, technical indicators, and MarketScope scores "
+    "rankings, technical indicators, and ETFChoice scores "
     "are not investment advice."
 )

@@ -17,13 +17,13 @@ from config import (
 st.title("💼 ETF Portfolio Builder")
 
 st.caption(
-    "Build a diversified ETF portfolio using MarketScope "
+    "Build a diversified ETF portfolio using ETFChoice "
     "rankings and predefined allocation models."
 )
 
 st.info(
     "The Portfolio Builder is a research tool. "
-    "Portfolio selections are based on MarketScope ETF rankings "
+    "Portfolio selections are based on ETFChoice rankings "
     "and are not personalized investment recommendations."
 )
 
@@ -36,7 +36,7 @@ market_data = st.session_state.get("market_data")
 
 if market_data is None:
     st.error(
-        "Shared MarketScope ETF data is not loaded. "
+        "Shared ETFChoice data is not loaded. "
         "Restart the application."
     )
     st.stop()
@@ -84,7 +84,7 @@ def ticker_has_category(
     category: str,
 ) -> bool:
     """
-    Determine whether an ETF belongs to a MarketScope category.
+    Determine whether an ETF belongs to a ETFChoice category.
     """
 
     categories = ETF_CATEGORY_LOOKUP.get(
@@ -155,7 +155,7 @@ def build_portfolio(
     portfolio_value: float,
 ) -> pd.DataFrame:
     """
-    Construct a MarketScope ETF portfolio.
+    Construct a ETFChoice portfolio.
 
     The highest-ranked available ETF from each allocation
     category is selected.
@@ -531,7 +531,7 @@ portfolio = build_portfolio(
 if portfolio.empty:
 
     st.warning(
-        "MarketScope could not build a portfolio "
+        "ETFChoice could not build a portfolio "
         "from the currently available ETF data."
     )
 
@@ -545,7 +545,7 @@ if portfolio.empty:
 st.markdown("---")
 
 st.markdown(
-    "## MarketScope ETF Portfolio"
+    "## ETFChoice Portfolio"
 )
 
 
@@ -792,7 +792,7 @@ for _, row in portfolio.iterrows():
 
     st.write(
         f"Selected as the highest-ranked available "
-        f"MarketScope ETF for **{category}** that also "
+        f"ETFChoice for **{category}** that also "
         f"avoids duplicating another portfolio position when possible."
     )
 
@@ -888,12 +888,12 @@ st.markdown(
 
 st.write(
     """
-    MarketScope examines the ETFs belonging to each category
+    ETFChoice examines the ETFs belonging to each category
     required by the selected portfolio model and ranks them using
-    the current MarketScope ETF Score.
+    the current ETFChoice Score.
 
     The highest-ranked available ETF in each category is selected.
-    When an ETF belongs to multiple categories, MarketScope attempts
+    When an ETF belongs to multiple categories, ETFChoice attempts
     to avoid selecting the same ETF twice by choosing the next
     highest-ranked qualifying ETF.
 
@@ -912,7 +912,7 @@ st.markdown("---")
 
 st.caption(
     "This portfolio is hypothetical and is provided for "
-    "informational and educational purposes only. MarketScope "
+    "informational and educational purposes only. ETFChoice "
     "rankings and model allocations do not consider individual "
     "investment objectives, tax circumstances, liquidity needs, "
     "or risk tolerance and should not be considered investment advice."

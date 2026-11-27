@@ -13,7 +13,7 @@ st.title("🔥 ETF Heatmap")
 
 st.caption(
     "Visualize ETF and sector performance across multiple "
-    "time periods using the shared MarketScope ETF dataset."
+    "time periods using the shared ETFChoice dataset."
 )
 
 
@@ -25,7 +25,7 @@ market_data = st.session_state.get("market_data")
 
 if market_data is None:
     st.error(
-        "Shared MarketScope ETF data is not loaded. "
+        "Shared ETFChoice data is not loaded. "
         "Restart the application."
     )
     st.stop()
@@ -101,7 +101,7 @@ def get_tickers_for_categories(
 ) -> list[str]:
     """
     Return unique ETF tickers belonging to the selected
-    MarketScope categories.
+    ETFChoice categories.
     """
 
     tickers = []
@@ -774,7 +774,7 @@ st.markdown("---")
 st.caption(
     "Green indicates positive performance and red indicates "
     "negative performance for the selected period. ETF tiles "
-    "are currently equally weighted. MarketScope ETF rankings "
+    "are currently equally weighted. ETFChoice rankings "
     "and performance measures are provided for informational "
     "and educational purposes only."
 )

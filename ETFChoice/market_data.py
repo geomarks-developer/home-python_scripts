@@ -1,5 +1,5 @@
 """
-MarketScope ETF
+ETFChoice
 Shared market-data loading and caching.
 """
 
@@ -110,7 +110,7 @@ def save_disk_cache(data: dict[str, Any]) -> bool:
         return False
     temp_path = None
     try:
-        with tempfile.NamedTemporaryFile(mode="wb", prefix="marketscope_etf_", suffix=".tmp", dir=PROJECT_DIRECTORY, delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="wb", prefix="etfchoice_", suffix=".tmp", dir=PROJECT_DIRECTORY, delete=False) as f:
             pickle.dump(data, f, protocol=pickle.HIGHEST_PROTOCOL)
             temp_path = Path(f.name)
         temp_path.replace(CACHE_PATH)
@@ -361,9 +361,9 @@ def build_market_data(progress_callback=None) -> dict[str, Any]:
         },
     }
 
-    report_progress(progress_callback, "Saving the MarketScope ETF cache...", 0.95)
+    report_progress(progress_callback, "Saving the ETFChoice cache...", 0.95)
     data["metadata"]["disk_cache_saved"] = save_disk_cache(data)
-    report_progress(progress_callback, "MarketScope ETF data is ready.", 1.0)
+    report_progress(progress_callback, "ETFChoice data is ready.", 1.0)
     return data
 
 
@@ -412,7 +412,7 @@ def refresh_market_data(progress_callback=None) -> dict[str, Any]:
 def initialize_market_data(force_refresh: bool = False) -> dict[str, Any]:
     if force_refresh or "market_data" not in st.session_state or st.session_state["market_data"] is None:
         session_key = str(uuid.uuid4())
-        progress_bar = st.progress(0.0, text="Loading MarketScope ETF data...")
+        progress_bar = st.progress(0.0, text="Loading ETFChoice data...")
 
         def update_progress(message: str, progress: float) -> None:
             progress_bar.progress(progress, text=message)
@@ -449,10 +449,10 @@ def get_market_metadata(market_data) -> dict[str, Any]:
 
 
 if __name__ == "__main__":
-    print("Building MarketScope ETF market data...")
+    print("Building ETFChoice market data...")
     data = get_market_data(force_refresh=True)
     metadata = get_market_metadata(data)
-    print("MarketScope ETF data build complete.")
+    print("ETFChoice data build complete.")
     print("Requested tickers:", metadata.get("requested_ticker_count"))
     print("Available tickers:", metadata.get("available_ticker_count"))
     print("Missing tickers:", metadata.get("missing_ticker_count"))

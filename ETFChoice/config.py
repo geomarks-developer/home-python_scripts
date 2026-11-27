@@ -1,5 +1,5 @@
 """
-MarketScope ETF
+ETFChoice
 Configuration and ETF universe definitions.
 """
 
@@ -7,7 +7,7 @@ Configuration and ETF universe definitions.
 # APPLICATION SETTINGS
 # =========================================================
 
-APP_NAME = "MarketScope ETF"
+APP_NAME = "ETFChoice"
 
 APP_DESCRIPTION = (
     "ETF screening, sector analysis, market trend analysis, "
@@ -38,7 +38,7 @@ BENCHMARKS = {
 # =========================================================
 #
 # These are the Select Sector SPDR ETFs used for the
-# MarketScope sector leadership and rotation analysis.
+# ETFChoice sector leadership and rotation analysis.
 #
 
 SECTOR_ETFS = {
@@ -270,7 +270,7 @@ ETF_UNIVERSE = sorted(
 # ETF CATEGORY LOOKUP
 # =========================================================
 #
-# A ticker can belong to multiple MarketScope categories.
+# A ticker can belong to multiple ETFChoice categories.
 #
 
 ETF_CATEGORY_LOOKUP = {}
@@ -287,7 +287,7 @@ for category, tickers in ETF_CATEGORIES.items():
 
 def get_etf_categories(ticker):
     """
-    Return all MarketScope categories associated with an ETF.
+    Return all ETFChoice categories associated with an ETF.
     """
 
     return ETF_CATEGORY_LOOKUP.get(
@@ -409,7 +409,7 @@ HISTORY_PERIOD = "2y"
 
 PRICE_INTERVAL = "1d"
 
-CACHE_FILENAME = "marketscope_etf_cache.pkl"
+CACHE_FILENAME = "etfchoice_cache.pkl"
 
 CACHE_MAX_AGE_HOURS = 24
 

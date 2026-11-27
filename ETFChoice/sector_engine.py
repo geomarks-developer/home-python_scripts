@@ -1,5 +1,5 @@
 """
-MarketScope ETF
+ETFChoice
 Sector analysis engine.
 
 Uses the ETF screener output to calculate:
@@ -87,7 +87,7 @@ def calculate_sector_score(
     row: pd.Series,
 ) -> float:
     """
-    Calculate the normalized MarketScope Sector Score.
+    Calculate the normalized ETFChoice Sector Score.
 
     All components are converted to a 0-100 scale before
     applying the configured sector weights.
@@ -465,7 +465,7 @@ def analyze_sectors(
 if __name__ == "__main__":
 
     print(
-        "MarketScope ETF sector engine loaded."
+        "ETFChoice sector engine loaded."
     )
 
     print(

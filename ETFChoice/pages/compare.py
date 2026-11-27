@@ -14,7 +14,7 @@ st.title("⚖️ Compare ETFs")
 
 st.caption(
     "Compare ETF performance, risk, trends, relative strength, "
-    "and MarketScope scores side by side."
+    "and ETFChoice scores side by side."
 )
 
 
@@ -26,7 +26,7 @@ market_data = st.session_state.get("market_data")
 
 if market_data is None:
     st.error(
-        "Shared MarketScope ETF data is not loaded. "
+        "Shared ETFChoice data is not loaded. "
         "Restart the application."
     )
     st.stop()
@@ -493,7 +493,7 @@ st.dataframe(
 
 st.markdown("---")
 
-st.markdown("## MarketScope Scores")
+st.markdown("## ETFChoice Scores")
 
 
 score_fields = {
@@ -1038,7 +1038,7 @@ st.dataframe(
 st.markdown("---")
 
 st.caption(
-    "MarketScope ETF comparisons are provided for "
+    "ETFChoice comparisons are provided for "
     "informational and educational purposes only. "
     "Historical performance, MarketScope scores, "
     "technical indicators, and hypothetical portfolio "

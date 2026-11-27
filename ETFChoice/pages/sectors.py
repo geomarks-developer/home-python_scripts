@@ -26,7 +26,7 @@ market_data = st.session_state.get("market_data")
 
 if market_data is None:
     st.error(
-        "Shared MarketScope ETF data is not loaded. "
+        "Shared ETFChoice data is not loaded. "
         "Restart the application."
     )
     st.stop()
@@ -827,7 +827,7 @@ st.markdown("---")
 
 st.caption(
     "Sector rankings and rotation classifications are "
-    "quantitative MarketScope indicators derived from historical "
+    "quantitative ETFChoice indicators derived from historical "
     "ETF price data. They are provided for informational and "
     "educational purposes and are not investment advice."
 )

@@ -11,7 +11,7 @@ from config import (
 # HEADER
 # =========================================================
 
-st.title("ℹ️ About MarketScope ETF")
+st.title("ℹ️ About ETFChoice")
 
 st.caption(
     "A focused ETF research dashboard for screening funds, "
@@ -24,7 +24,7 @@ st.caption(
 # ABOUT
 # =========================================================
 
-st.markdown("## What Is MarketScope ETF?")
+st.markdown("## What Is ETFChoice?")
 
 st.write(
     f"""
@@ -32,7 +32,7 @@ st.write(
     designed to bring several types of ETF analysis together in
     one dashboard.
 
-    Instead of focusing on individual stocks, MarketScope ETF
+    Instead of focusing on individual stocks,  ETFChoice
     looks across ETFs representing broad markets, sectors,
     investment styles, international markets, bonds, real estate,
     commodities, factors, and thematic strategies.
@@ -55,11 +55,11 @@ st.write(
 
 st.markdown("---")
 
-st.markdown("## What MarketScope ETF Is Designed To Do")
+st.markdown("## What ETFChoice Is Designed To Do")
 
 st.write(
     """
-    MarketScope ETF combines market data with a quantitative
+     ETFChoice combines market data with a quantitative
     screening framework to organize ETFs into a consistent
     research process.
 
@@ -89,7 +89,7 @@ st.markdown("### 🏠 Summary")
 st.write(
     """
     The Summary dashboard provides a high-level view of the
-    MarketScope ETF universe.
+    ETFChoice universe.
 
     It highlights:
 
@@ -98,7 +98,7 @@ st.write(
     - Momentum leaders
     - Leading and lagging sectors
     - Sector leadership
-    - Current MarketScope ETF scores
+    - Current ETFChoice scores
     """
 )
 
@@ -112,7 +112,7 @@ st.markdown("### 🔎 ETF Screener")
 st.write(
     """
     The ETF Screener ranks and filters ETFs using the
-    MarketScope scoring framework.
+    ETFChoice scoring framework.
 
     ETFs can be evaluated across categories such as broad market,
     growth, value, dividends, sectors, international markets,
@@ -132,8 +132,8 @@ st.write(
     The sector analysis features are designed to identify areas
     of market leadership and weakness.
 
-    MarketScope evaluates the major sector ETFs using performance,
-    trend, and MarketScope scoring information.
+    ETFChoice evaluates the major sector ETFs using performance,
+    trend, and ETFChoice scoring information.
     """
 )
 
@@ -167,7 +167,7 @@ st.write(
 
     - Historical price performance
     - 50-day and 200-day moving averages
-    - MarketScope ETF Score
+    - ETFChoice Score
     - Momentum and trend measures
     - RSI
     - Volatility
@@ -189,7 +189,7 @@ st.write(
     Compare ETFs allows multiple funds to be evaluated side by side.
 
     The comparison includes performance, risk, technical indicators,
-    MarketScope scores, relative strength, and hypothetical growth
+    ETFChoice scores, relative strength, and hypothetical growth
     of an equal starting investment.
     """
 )
@@ -204,7 +204,7 @@ st.markdown("### 💼 Portfolio Builder")
 st.write(
     """
     The Portfolio Builder combines predefined asset-allocation
-    models with current MarketScope ETF rankings.
+    models with current ETFChoice rankings.
 
     Available models include:
 
@@ -214,7 +214,7 @@ st.write(
     - Income
     - Aggressive
 
-    MarketScope searches the appropriate ETF categories and selects
+    ETFChoice searches the appropriate ETF categories and selects
     highly ranked qualifying ETFs for each portfolio allocation.
     """
 )
@@ -226,7 +226,7 @@ st.write(
 
 st.markdown("---")
 
-st.markdown("## How MarketScope ETF Fits Together")
+st.markdown("## How ETFChoice Fits Together")
 
 st.markdown(
     """
@@ -246,7 +246,7 @@ st.markdown(
 
     ↓
 
-    **MarketScope ETF Score**
+    **ETFChoice Score**
 
     ↓
 
@@ -269,7 +269,7 @@ st.markdown("## Design Philosophy")
 
 st.write(
     """
-    MarketScope ETF is built around a few simple principles:
+    ETFChoice is built around a few simple principles:
     """
 )
 
@@ -283,7 +283,7 @@ st.markdown(
 
     **Look at more than one time horizon**
 
-    Short-term performance can be noisy. MarketScope combines
+    Short-term performance can be noisy. ETFChoice combines
     several periods when evaluating momentum and market leadership.
 
     **Separate data from presentation**
@@ -293,7 +293,7 @@ st.markdown(
 
     **Use rankings as research signals, not predictions**
 
-    A high MarketScope score describes conditions measured by the
+    A high ETFChoice score describes conditions measured by the
     current model. It does not predict future returns.
 
     **Keep the system modular**
@@ -315,7 +315,7 @@ st.markdown("## Market Data")
 
 st.write(
     """
-    MarketScope ETF uses historical market information retrieved
+    ETFChoice uses historical market information retrieved
     through the application's shared data layer.
 
     Data is cached so that navigating between pages, selecting ETFs,
@@ -340,7 +340,7 @@ st.markdown("## Want to Know How the Scores Work?")
 st.write(
     """
     The **Methodology** page provides the detailed explanation of
-    the MarketScope framework, including:
+    the ETFChoice framework, including:
 
     - ETF Score weights
     - Momentum calculations
@@ -393,9 +393,9 @@ st.warning(
     """
     **Important**
 
-    MarketScope ETF is a research and educational application.
+    ETFChoice is a research and educational application.
 
-    MarketScope scores, ETF rankings, sector rankings, technical
+    ETFChoice scores, ETF rankings, sector rankings, technical
     indicators, comparisons, and model portfolios are not investment
     recommendations and should not be treated as predictions of
     future performance.

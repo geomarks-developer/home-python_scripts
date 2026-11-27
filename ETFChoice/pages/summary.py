@@ -9,13 +9,13 @@ from sector_engine import analyze_sectors
 # PAGE HEADER
 # =========================================================
 
-st.title("📊 MarketScope ETF")
+st.title("📊 ETFChoice")
 
 st.subheader("ETF & Sector Market Dashboard")
 
 st.caption(
     "Identify ETF momentum, sector leadership, market trends, "
-    "and relative strength across the MarketScope ETF universe."
+    "and relative strength across the ETFChoice universe."
 )
 
 
@@ -27,7 +27,7 @@ market_data = st.session_state.get("market_data")
 
 if market_data is None:
     st.error(
-        "Shared MarketScope ETF data is not loaded. "
+        "Shared ETFChoice data is not loaded. "
         "Restart the application."
     )
     st.stop()
@@ -595,7 +595,7 @@ if "Momentum Score" in etf_df.columns:
 
 st.markdown("---")
 
-with st.expander("📡 MarketScope Data Status"):
+with st.expander("📡 ETFChoice Data Status"):
 
     last_refresh = metadata.get("last_refresh")
     source = metadata.get("loaded_from", "Unknown")
@@ -660,7 +660,7 @@ with st.expander("📡 MarketScope Data Status"):
 st.markdown("---")
 
 st.caption(
-    "MarketScope ETF is provided for informational and "
+    "ETFChoice is provided for informational and "
     "educational purposes only. Rankings, trends, scores, "
     "and other indicators are not investment advice."
 )

@@ -9,7 +9,7 @@ from market_data import (
 # ---------------------------------------------------------
 
 st.set_page_config(
-    page_title="MarketScope ETF",
+    page_title="ETFChoice",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -24,7 +24,7 @@ try:
 
 except Exception as error:
     st.error(
-        "MarketScope ETF could not load its market data."
+        "ETFChoice could not load its market data."
     )
 
     st.exception(error)
@@ -79,7 +79,7 @@ portfolio_page = st.Page(
 
 about_page = st.Page(
     "pages/about.py",
-    title="About MarketScope ETF",
+    title="About ETFChoice",
     icon="ℹ️",
 )
 
@@ -101,7 +101,7 @@ risk_page = st.Page(
 # ---------------------------------------------------------
 
 pages = {
-    "MarketScope ETF": [
+    "ETFChoice": [
         summary_page,
         etf_screener_page,
         sectors_page,
@@ -133,7 +133,7 @@ with st.sidebar:
 
     st.markdown(
         """
-        ### 📊 MarketScope ETF
+        ### 📊 ETFChoice
 
         **ETF & Sector Market Analysis**
 
@@ -166,7 +166,7 @@ with st.sidebar:
     st.markdown("---")
 
     st.caption(
-        "MarketScope ETF is provided for informational "
+        "ETFChoice is provided for informational "
         "and educational purposes only. "
         "It is not investment advice."
     )

@@ -18,12 +18,12 @@ from config import (
 st.title("📖 Methodology")
 
 st.caption(
-    "How MarketScope ETF evaluates ETFs, identifies trends, "
+    "How ETFChoice evaluates ETFs, identifies trends, "
     "ranks sectors, and constructs model portfolios."
 )
 
 st.info(
-    "MarketScope ETF uses a rules-based quantitative approach. "
+    "ETFChoice uses a rules-based quantitative approach. "
     "Scores and rankings are designed as research tools and should "
     "not be interpreted as predictions or investment recommendations."
 )
@@ -33,11 +33,11 @@ st.info(
 # OVERVIEW
 # =========================================================
 
-st.markdown("## MarketScope ETF Framework")
+st.markdown("## ETFChoice Framework")
 
 st.write(
     """
-    MarketScope ETF combines price performance, technical trends,
+    ETFChoice combines price performance, technical trends,
     historical risk, liquidity, fund characteristics, and relative
     strength into a structured framework for comparing ETFs.
 
@@ -61,7 +61,7 @@ st.markdown("## ETF Universe")
 
 st.write(
     """
-    The MarketScope ETF universe is organized into broad investment
+    The ETFChoice universe is organized into broad investment
     categories rather than treating every ETF as interchangeable.
 
     Current categories include:
@@ -103,7 +103,7 @@ st.markdown("## Performance Analysis")
 
 st.write(
     """
-    MarketScope calculates percentage price returns over multiple
+    ETFChoice calculates percentage price returns over multiple
     periods so that both recent momentum and longer-term performance
     can be evaluated.
     """
@@ -141,7 +141,7 @@ st.markdown("## Trend Analysis")
 
 st.write(
     f"""
-    MarketScope uses the **{SMA_SHORT}-day** and
+    ETFChoice uses the **{SMA_SHORT}-day** and
     **{SMA_LONG}-day simple moving averages (SMA)** to help
     evaluate an ETF's intermediate and long-term price trend.
 
@@ -201,11 +201,11 @@ st.markdown("## Relative Strength Index")
 
 st.write(
     f"""
-    MarketScope calculates a **{RSI_PERIOD}-period RSI** as part
+    ETFChoice calculates a **{RSI_PERIOD}-period RSI** as part
     of the technical trend analysis.
 
     RSI is evaluated alongside moving averages and price position.
-    MarketScope does not use RSI by itself to determine whether an
+    ETFChoice does not use RSI by itself to determine whether an
     ETF should rank highly.
     """
 )
@@ -224,7 +224,7 @@ st.write(
     The Momentum Score measures price strength across several
     time horizons.
 
-    MarketScope currently emphasizes:
+    ETFChoice currently emphasizes:
     """
 )
 
@@ -302,7 +302,7 @@ st.markdown("## Risk Score")
 
 st.write(
     """
-    MarketScope evaluates historical risk using two primary measures:
+    ETFChoice evaluates historical risk using two primary measures:
     """
 )
 
@@ -323,7 +323,7 @@ st.markdown(
 st.write(
     """
     Lower historical volatility and smaller maximum drawdowns
-    generally produce higher MarketScope Risk Scores.
+    generally produce higher ETFChoice Risk Scores.
     """
 )
 
@@ -338,7 +338,7 @@ st.markdown("## Liquidity Score")
 
 st.write(
     """
-    MarketScope currently estimates liquidity using average daily
+    ETFChoice currently estimates liquidity using average daily
     share volume.
 
     Higher-volume ETFs receive stronger liquidity scores because
@@ -376,7 +376,7 @@ st.write(
 
 st.warning(
     "Fund metadata may not yet be available for every ETF. "
-    "When a component is unavailable, MarketScope excludes that "
+    "When a component is unavailable, ETFChoice excludes that "
     "component and re-normalizes the remaining ETF Score weights."
 )
 
@@ -387,7 +387,7 @@ st.warning(
 
 st.markdown("---")
 
-st.markdown("## MarketScope ETF Score")
+st.markdown("## ETFChoice Score")
 
 st.write(
     """
@@ -422,14 +422,14 @@ st.dataframe(
 st.write(
     """
     A higher ETF Score indicates stronger results across the
-    MarketScope framework. It does not represent an expected
+    ETFChoice framework. It does not represent an expected
     investment return or probability of future success.
     """
 )
 
 st.info(
     "When one or more score components are unavailable, "
-    "MarketScope calculates the overall score using the available "
+    "ETFChoice calculates the overall score using the available "
     "components and proportionally re-normalizes their weights."
 )
 
@@ -445,7 +445,7 @@ st.markdown("## Relative Strength")
 st.write(
     """
     Relative Strength compares an ETF's percentage return with
-    the return of the MarketScope benchmark over the same period.
+    the return of the ETFChoice benchmark over the same period.
 
     The current primary benchmark is **SPY**.
     """
@@ -477,7 +477,7 @@ st.markdown("## Sector Analysis")
 
 st.write(
     """
-    MarketScope separately evaluates the major sector ETFs to help
+    ETFChoice separately evaluates the major sector ETFs to help
     identify market leadership and areas of relative weakness.
 
     Sector analysis currently incorporates multiple performance
@@ -530,9 +530,9 @@ st.markdown("## Portfolio Builder")
 st.write(
     """
     The Portfolio Builder uses predefined asset-allocation models
-    and the current MarketScope ETF rankings.
+    and the current ETFChoice rankings.
 
-    For each category required by a portfolio model, MarketScope
+    For each category required by a portfolio model, ETFChoice
     searches the available ETFs in that category and selects the
     highest-ranked qualifying ETF.
 
@@ -580,7 +580,7 @@ st.write(
     """
     The current Portfolio Builder uses whole ETF shares.
 
-    MarketScope first calculates the target dollar allocation for
+    ETFChoice first calculates the target dollar allocation for
     each portfolio category and then determines how many whole
     shares can be purchased without exceeding that target.
 
@@ -600,7 +600,7 @@ st.markdown("## Data Processing")
 
 st.write(
     """
-    MarketScope separates data collection from analysis.
+    ETFChoice separates data collection from analysis.
 
     Market data is loaded centrally and shared throughout the
     application. The Summary, Screener, ETF Explorer, Compare,
@@ -628,11 +628,11 @@ st.markdown("## Important Limitations")
 
 st.markdown(
     """
-    MarketScope ETF has several important limitations:
+    ETFChoice has several important limitations:
 
     - Historical performance does not predict future returns.
     - Technical indicators can generate false or conflicting signals.
-    - MarketScope scores depend on the metrics available to the model.
+    - ETFChoice scores depend on the metrics available to the model.
     - ETF classifications can overlap.
     - Volatility and drawdown are historical measures.
     - Portfolio models are hypothetical and not personalized.
@@ -652,10 +652,10 @@ st.warning(
     """
     **Investment Risk**
 
-    MarketScope ETF is provided for informational and educational
+    ETFChoice is provided for informational and educational
     purposes only.
 
-    ETF rankings, sector rankings, MarketScope scores, model
+    ETF rankings, sector rankings, ETFChoice scores, model
     portfolios, technical indicators, and other information displayed
     by the application do not constitute investment, financial, tax,
     or legal advice.

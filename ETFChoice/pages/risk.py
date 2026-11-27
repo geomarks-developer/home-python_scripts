@@ -9,7 +9,7 @@ st.title("⚠️ Risk Disclosure")
 
 st.caption(
     "Important information about the limitations, risks, "
-    "and intended use of MarketScope ETF."
+    "and intended use of ETFChoice."
 )
 
 
@@ -19,13 +19,13 @@ st.caption(
 
 st.warning(
     """
-    **MarketScope ETF is provided for informational and
+    **ETFChoice is provided for informational and
     educational purposes only.**
 
     Nothing presented by this application should be interpreted
     as investment, financial, tax, accounting, or legal advice.
 
-    MarketScope ETF does not make recommendations to buy, sell,
+    ETFChoice does not make recommendations to buy, sell,
     or hold any security.
     """
 )
@@ -43,7 +43,7 @@ st.write(
     investments can rise or fall, and investors may lose money.
 
     Historical performance, technical indicators, rankings,
-    relative-strength calculations, and MarketScope scores
+    relative-strength calculations, and ETFChoice scores
     do not guarantee future investment results.
     """
 )
@@ -83,7 +83,7 @@ st.markdown(
 
 st.write(
     """
-    ETFs within the same MarketScope category should not be
+    ETFs within the same ETFChoice category should not be
     assumed to have identical investment objectives, holdings,
     risk characteristics, or expected behavior.
     """
@@ -106,7 +106,7 @@ st.write(
     ETFs can own overlapping securities, sectors, industries,
     countries, asset classes, or investment factors.
 
-    MarketScope categories are intended to organize ETFs for
+    ETFChoice categories are intended to organize ETFs for
     analysis. They should not be interpreted as guarantees that
     ETFs assigned to different categories have independent
     investment exposures.
@@ -143,13 +143,13 @@ st.markdown("## Historical Performance")
 
 st.write(
     """
-    MarketScope relies heavily on historical market information.
+    ETFChoice relies heavily on historical market information.
 
     Historical returns are backward-looking and do not predict
     future performance.
 
     ETFs that have performed strongly during the periods measured
-    by MarketScope may subsequently underperform. ETFs that have
+    by ETFChoice may subsequently underperform. ETFs that have
     performed poorly may subsequently outperform.
     """
 )
@@ -165,7 +165,7 @@ st.markdown("## Technical Indicators")
 
 st.write(
     """
-    MarketScope uses technical measures including moving averages,
+    ETFChoice uses technical measures including moving averages,
     RSI, momentum, distance from 52-week highs, volatility, and
     maximum drawdown.
 
@@ -177,16 +177,16 @@ st.write(
 
 
 # =========================================================
-# MARKETSCOPE SCORES
+# ETFChoice SCORES
 # =========================================================
 
 st.markdown("---")
 
-st.markdown("## MarketScope Scores and Rankings")
+st.markdown("## ETFChoice Scores and Rankings")
 
 st.write(
     """
-    MarketScope scores are quantitative research tools created
+    ETFChoice scores are quantitative research tools created
     specifically for this application.
 
     ETF Score, Momentum Score, Trend Score, Risk Score,
@@ -198,7 +198,7 @@ st.write(
 
 st.write(
     """
-    A higher MarketScope score means that an ETF ranked more
+    A higher ETFChoice score means that an ETF ranked more
     favorably under the application's current methodology.
 
     It does not mean that the ETF is guaranteed to outperform,
@@ -218,7 +218,7 @@ st.markdown("## Relative Strength")
 
 st.write(
     """
-    MarketScope compares selected ETF returns with SPY as its
+    ETFChoice compares selected ETF returns with SPY as its
     primary benchmark.
 
     Relative strength describes historical performance relative
@@ -239,7 +239,7 @@ st.markdown("## Sector Rankings")
 st.write(
     """
     Sector rankings identify relative historical strength under
-    the MarketScope methodology.
+    the ETFChoice methodology.
 
     A sector identified as a leader may subsequently weaken,
     while a lagging sector may subsequently strengthen.
@@ -261,11 +261,11 @@ st.markdown("## Portfolio Builder")
 
 st.write(
     """
-    Portfolios created by the MarketScope Portfolio Builder are
+    Portfolios created by the ETFChoice Portfolio Builder are
     hypothetical model portfolios.
 
     The portfolio models use predefined allocation percentages and
-    MarketScope rankings. They are not customized for any individual
+    ETFChoice rankings. They are not customized for any individual
     investor.
     """
 )
@@ -291,7 +291,7 @@ st.markdown(
 st.write(
     """
     The terms Conservative, Balanced, Growth, Income, and Aggressive
-    are descriptive names used by MarketScope for its predefined
+    are descriptive names used by ETFChoice for its predefined
     allocation models. They should not be interpreted as an
     assessment that a particular model is appropriate for an
     individual investor.
@@ -310,7 +310,7 @@ st.markdown("## Hypothetical Portfolio Results")
 st.write(
     """
     Portfolio values and investment comparisons shown within
-    MarketScope may be hypothetical.
+    ETFChoice may be hypothetical.
 
     The Growth of Investment comparisons assume the same initial
     investment in each ETF so that historical performance can be
@@ -332,12 +332,12 @@ st.markdown("## Data Limitations")
 
 st.write(
     """
-    MarketScope depends on third-party market data.
+    ETFChoice depends on third-party market data.
 
     Data may occasionally be unavailable, incomplete, stale,
     delayed, inaccurate, or inconsistent.
 
-    MarketScope calculations may also be affected by missing
+    ETFChoice calculations may also be affected by missing
     historical prices, unavailable ETF metadata, corporate actions,
     data-processing errors, or changes in third-party data services.
     """
@@ -364,7 +364,7 @@ st.write(
     Expense ratios, dividend yields, assets, classifications, and
     other fund characteristics may change over time.
 
-    Information displayed by MarketScope should be verified against
+    Information displayed by ETFChoice should be verified against
     current information published by the ETF provider before making
     an investment decision.
     """
@@ -381,7 +381,7 @@ st.markdown("## Cached Market Data")
 
 st.write(
     """
-    MarketScope uses cached market data to improve performance and
+    ETFChoice uses cached market data to improve performance and
     reduce unnecessary repeated data requests.
 
     As a result, information displayed by the application may not
@@ -403,7 +403,7 @@ st.markdown("## Software Limitations")
 
 st.write(
     """
-    MarketScope ETF is software and may contain bugs, calculation
+    ETFChoice is software and may contain bugs, calculation
     errors, programming errors, configuration errors, or other
     technical issues.
 
@@ -429,7 +429,7 @@ st.info(
     investment objective, holdings, strategy, fees, risks, and other
     official fund information.
 
-    MarketScope should be used as one research tool rather than as
+    ETFChoice should be used as one research tool rather than as
     the sole basis for an investment decision.
     """
 )
@@ -445,11 +445,11 @@ st.markdown("## Final Notice")
 
 st.warning(
     """
-    **By using MarketScope ETF, users acknowledge that investment
+    **By using ETFChoice, users acknowledge that investment
     decisions and their resulting gains or losses remain the
     responsibility of the investor.**
 
-    MarketScope ETF provides analytical information and does not
+    ETFChoice provides analytical information and does not
     guarantee investment performance or outcomes.
     """
 )
